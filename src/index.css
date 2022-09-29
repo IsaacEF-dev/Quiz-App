@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.form__label{
+    @apply text-gray-700 font-bold text-sm mb-5 ml-1
+}
+
+.form__input{
+    @apply block w-full h-10 rounded-sm p-2 border-b-2 border-gray-400 outline-none bg-transparent 
+}
