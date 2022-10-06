@@ -3,9 +3,17 @@
 @tailwind utilities;
 
 .form__label{
-    @apply text-gray-700 font-bold text-sm mb-5 ml-1
+    @apply text-gray-700 font-bold text-sm  ml-1
 }
 
 .form__input{
-    @apply block w-full h-10 rounded-sm p-2 border-b-2 border-gray-400 outline-none bg-transparent 
+    @apply block w-full h-10 rounded-sm p-2 border-b-2  outline-none bg-transparent placeholder:text-gray-600
+}
+
+.link__item{
+    @apply mt-6 bg-gray-200/70 text-base flex  items-center justify-center py-2 w-full rounded-md
+}
+
+.invalidInput{
+    @apply border-red-500
 }
