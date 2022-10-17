@@ -17,3 +17,15 @@
 .invalidInput{
     @apply border-red-500
 }
+
+.categoria{
+    @apply bg-orange-500 py-1 px-2 rounded-full text-sm text-white mr-1 mt-1
+}
+
+.btnCancel{
+    @apply bg-red-500 mt-10 p-2 rounded-md text-white font-semibold flex items-center mr-1
+}
+
+.btnContinuar{
+    @apply bg-orange-400 mt-10 p-2 rounded-md text-white font-semibold flex items-center
+}

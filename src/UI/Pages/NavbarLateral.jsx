@@ -1,9 +1,14 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import {VscNotebook,BiHomeAlt,FiSettings,AiOutlineUser,ImExit} from "react-icons/all"
+import { useAuthStore } from '../../QuizApp/Hooks/useAuthStore'
 
 export const NavbarLateral = ({menu}) => {
-    console.log(menu)
+    const {startLogout}=useAuthStore();
+    const onLogout=(e)=>{
+        e.preventDefault();
+        startLogout();
+    }
   return (
     <div className={`h-screen fixed sm:w-72 sm:left-0 w-[14rem] sm:relative bg-gray-100 ${menu?'-left-2/3':'left-0'} transition-all duration-500`}>
        <div className="px-2  flex flex-col items-center relative h-full">
@@ -21,12 +26,14 @@ export const NavbarLateral = ({menu}) => {
                     <FiSettings className='mr-2 text-lg text-gray-900'/>
                     Ajustes
                 </NavLink>
-                <NavLink to="/misCuestionario" className={"link__item"}>
+                <NavLink to="/Perfil" className={"link__item"}>
                     <AiOutlineUser className='mr-2 text-lg text-gray-900'/>
                     Mi Perfil
                 </NavLink>
             </div>
-            <NavLink to="/misCuestionario" className={"flex bg-orange-600 px-4 absolute bottom-28 text-white py-2 items-center rounded-md"}>
+            <NavLink to="/misCuestionario" 
+            className={"flex bg-orange-600 px-4 absolute bottom-28 text-white py-2 items-center rounded-md"}
+            onClick={onLogout}>
                     <ImExit className='mr-2 text-lg text-white'/>
                     Salir
             </NavLink>

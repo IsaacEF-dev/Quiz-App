@@ -2,9 +2,12 @@ import {Link,NavLink} from "react-router-dom"
 import {GrSearch,FaUserAlt,GiHamburgerMenu,ImCross} from "react-icons/all"
 import { NavbarLateral } from "./NavbarLateral"
 import { useState } from "react"
+import { useAuthStore } from "../../QuizApp/Hooks/useAuthStore"
+import { useSelector } from "react-redux"
 export const Navbar = ({menu,setMenu}) => {
 
-
+  const {user}=useSelector(state=>state.auth);
+  console.log(user.nombre)
   const mobilMenu=(e)=>{
     e.preventDefault();
     setMenu(!menu);
@@ -23,7 +26,7 @@ export const Navbar = ({menu,setMenu}) => {
                 </form>
                 <NavLink to="/perfil" className="sm:flex items-center hidden justify-end text-gray-800 text-base font-bold basis-1/4">
                     <FaUserAlt className="mr-1 "/>
-                    Julian
+                    {user.nombre}
                 </NavLink>
             </div>
             

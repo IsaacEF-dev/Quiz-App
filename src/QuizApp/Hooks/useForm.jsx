@@ -20,6 +20,7 @@ export const useForm = (initialForm={}) => {
     ...formState,
     formState,
     inputChange,
+    setFormState,
     onResetForm
   }
 }
