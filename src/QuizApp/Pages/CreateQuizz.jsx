@@ -24,10 +24,11 @@ export const CreateQuizz = () => {
                                 <BiSelectMultiple className='text-white text-xl mr-1'/>
                                 Opcion Multiple
                             </Link>
-                            <button className="bg-orange-500  w-full py-2 px-3 mt-3 rounded-full flex justify-center items-center text-white text-sm font-semibold">
+                            <Link to='/preguntaAbierta'
+                            className="bg-orange-500  w-full py-2 px-3 mt-3 rounded-full flex justify-center items-center text-white text-sm font-semibold">
                                 <BsChatSquareFill className='text-white text-base mr-1'/>
                                 Pregunta Abierta
-                            </button>
+                            </Link>
                         </div>
                     </div>
                     <div className="basis-3/4 bg-white px-1">

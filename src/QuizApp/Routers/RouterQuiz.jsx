@@ -8,6 +8,7 @@ import { Login } from "../Pages/Login"
 import { MisCuestionarios } from "../Pages/MisCuestionarios"
 import { OpcionMultiple } from "../Pages/OpcionMultiple"
 import { Perfil } from "../Pages/Perfil"
+import { PreguntaAbierta } from "../Pages/PreguntaAbierta"
 import { QuizApp } from "../Pages/QuizApp"
 
 
@@ -27,6 +28,7 @@ export const RouterQuiz = () => {
               <Route path="/Perfil" exact={true}   element={<Perfil />} />
               <Route path="/CreateQuiz" exact={true}   element={<CreateQuizz />} />
               <Route path="/opcionMultiple" exact={true}   element={<OpcionMultiple />} />
+              <Route path="/preguntaAbierta" exact={true}   element={<PreguntaAbierta />} />
           </Routes>
         </div>
       </BrowserRouter>
