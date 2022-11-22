@@ -19,7 +19,7 @@
 }
 
 .categoria{
-    @apply bg-orange-500 py-1 px-2 rounded-full text-sm text-white mr-1 mt-1
+    @apply  py-1 px-2 rounded-full text-sm text-white mr-1 mt-1
 }
 
 .btnCancel{

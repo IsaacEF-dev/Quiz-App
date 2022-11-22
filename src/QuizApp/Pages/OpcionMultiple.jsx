@@ -1,7 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {AiFillPicture,BsFillTrashFill,BsFillCheckCircleFill,BsPlusLg,MdCancel,FaArrowCircleRight} from "react-icons/all"
 import { Link } from 'react-router-dom'
+import { useForm } from '../Hooks/useForm'
+import {ComponentePregunta} from "../components/componentePregunta"
 export const OpcionMultiple = () => {
+
+    const [pregunta, setPregunta] = useState(["","",""])
+    
+    const addPregunta=(e)=>{
+        e.preventDefault();
+        
+        setPregunta([...pregunta,""])
+    }
+
+    const handleChange=((e,index)=>{
+        const pre=[...pregunta];
+        pre[index]=e.target.value;
+        setPregunta(pre);
+    })
+
+    const removePregunta=(e,index)=>{
+        const lista=[...pregunta];
+        lista.splice(index,1);
+        setPregunta(lista);
+    }
+
+    const addTrue=(e)=>{
+        e.preventDefault();
+        if(e.target.tagName=="path"){
+            const anterior=document.querySelector("button .text-green-500");
+        
+            if(anterior){
+                anterior.classList="text-white/80 text-[25px]";
+            }
+            e.target.nearestViewportElement.classList="text-white/80 text-[25px] text-green-500"
+        }
+        
+       
+    }
   return (
     <>
         <div className="bg-gray-200 w-full max-h-screen sm:overflow-scroll p-8 ">
@@ -15,54 +51,27 @@ export const OpcionMultiple = () => {
                      placeholder='Escribe Tu Pregunta...'/>
                 </div>
                 <div className=" mt-5 flex items-center flex-wrap justify-between">
-                    <div className=" basis-[33%] bg-blue-400 mt-2 rounded-md pb-10 pt-2 px-3 relative">
-                        <div className="flex items-center pb-1 justify-between w-full ">
-                                <button className='text-base bg-black/20 p-2 rounded-md'>
-                                    <BsFillTrashFill className='text-white'/>
-                                </button>
-                                <button className='text-base bg-black/25 p-[3px] rounded-full'>
-                                    <BsFillCheckCircleFill className='text-white/80 text-[25px]'/>
-                                </button>
+                    
+                    {pregunta.map((campo,index)=>(
+                        <div className=" basis-[33%] bg-blue-400 mt-2 rounded-md pb-10 pt-2 px-3 relative" key={index}>
+                            <div className="flex items-center pb-1 justify-between w-full ">
+                                    <button className='text-base bg-black/20 p-2 rounded-md'
+                                    type='button'
+                                    onClick={(e)=>removePregunta(e,index)}>
+                                        <BsFillTrashFill className='text-white'/>
+                                    </button>
+                                    <button className='text-base bg-black/25 p-[2px] rounded-full' onClick={addTrue}>
+                                        <BsFillCheckCircleFill className='text-white/80 text-[25px]'/>
+                                    </button>
+                            </div>
+                            <input type="text" 
+                            className='bg-transparent text-xl w-full h-40 text-white font-bold bg-blue-400 text-center text-xl9.
+                            placeholder:text-white border-none outline-none rounded-md' 
+                            placeholder='Escribe tu respuesta' name='respuesta1' value={campo} onChange={(e)=>handleChange(e,index)} />
+                            
                         </div>
-                        <input type="text" 
-                        className='bg-transparent text-xl w-full h-40 text-white font-bold bg-blue-400 text-center text-xl9.
-                         placeholder:text-white border-none outline-none rounded-md' 
-                        placeholder='Escribe tu respuesta'/>
-                        
-                    </div>
-
-                    <div className=" basis-[33%] bg-blue-400 mt-2 rounded-md pb-10 pt-2 px-3 relative">
-                        <div className="flex items-center justify-between pb-1 w-full ">
-                                <button className='text-base bg-black/20 p-2 rounded-md'>
-                                    <BsFillTrashFill className='text-white'/>
-                                </button>
-                                <button className='text-base bg-black/25 p-[3px] rounded-full'>
-                                    <BsFillCheckCircleFill className='text-white/80 text-[25px]'/>
-                                </button>
-                        </div>
-                        <input type="text" 
-                        className='bg-transparent w-full text-xl h-40 bg-blue-400 text-center text-xl9.
-                         placeholder:text-white border-none outline-none text-white font-bold rounded-md' 
-                        placeholder='Escribe tu respuesta'/>
-                        
-                    </div>
-
-                    <div className=" basis-[33%] bg-blue-400 mt-2 rounded-md pb-10 pt-2 px-3 relative">
-                        <div className="flex items-center justify-between w-full pb-1">
-                                <button className='text-base bg-black/20 p-2 rounded-md'>
-                                    <BsFillTrashFill className='text-white'/>
-                                </button>
-                                <button className='text-base bg-black/25 p-[3px] rounded-full'>
-                                    <BsFillCheckCircleFill className='text-white/80 text-[25px]'/>
-                                </button>
-                        </div>
-                        <input type="text" 
-                        className='bg-transparent w-full h-40 bg-blue-400 text-center text-xl9.
-                         placeholder:text-white border-none outline-none text-xl text-white font-bold rounded-md' 
-                        placeholder='Escribe tu respuesta'/>
-                        
-                    </div>
-
+                    ))}
+                    
                     
                 </div>
                 <div className="flex item-center justify-end">
@@ -72,12 +81,14 @@ export const OpcionMultiple = () => {
                         <MdCancel className='text-white ml-2 '/>
                     </Link>
                     <button 
-                        className='btnContinuar'>
+                        className='btnContinuar' disabled={(pregunta.length>0)? false:true}>
                         Agregar
                         <FaArrowCircleRight className='text-white ml-2 '/>
                     </button>
                 </div>
-                <button className='absolute -bottom-6 left-1/2 bg-gray-100 shadow-md p-3 rounded-full'>
+                <button className='absolute -bottom-6 left-1/2 bg-gray-100 shadow-md p-3 rounded-full'
+                disabled={(pregunta.length==6)?true:false}
+                onClick={addPregunta}>
                     <BsPlusLg className='text-lg'/>
                 </button>
             </div>

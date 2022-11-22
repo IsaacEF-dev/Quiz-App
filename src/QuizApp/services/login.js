@@ -8,7 +8,7 @@ export class usuarioLogin{
               "Content-Type": "application/json"
             },
             body: JSON.stringify({correo,pass:keyUser})
-          };
+        };
            let response=await fetch("http://localhost:4002/auth",options);
            let date=await response.json();
            

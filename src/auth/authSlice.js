@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// Action creators are generated for each case reducer function
 export const authSlice = createSlice({
     name: 'auth',
     initialState: {
